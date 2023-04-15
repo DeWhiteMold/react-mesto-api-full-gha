@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.252.136.195
+IP-адрес 0.0.0.0
 
 Frontend https://dewhiteproject.nomoredomains.monster
 
