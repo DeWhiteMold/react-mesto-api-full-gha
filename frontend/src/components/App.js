@@ -87,9 +87,10 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser.userId);
+    const isLiked = card.likes.some(id => id === currentUser.userId);
     
-    api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
+    api.changeLikeCardStatus(card._id, !isLiked).then((res) => {
+      const newCard = res.data;
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
     .catch((err) => {console.log(err)});
@@ -149,18 +150,19 @@ function App() {
 
     api.getUserInfo()
       .then((res) => {
+        const user = res.data
         setCurrentUser({
-          userName: res.name,
-          userDescription: res.about,
-          userAvatar: res.avatar,
-          userId: res._id
+          userName: user.name,
+          userDescription: user.about,
+          userAvatar: user.avatar,
+          userId: user._id
         })
       })
       .catch((err) => {console.log(err)})
 
       api.getInitialCards()
         .then((res) => {
-          setCards([...cards, ...res]);
+          setCards([...cards, ...res.data]);
         })
         .catch((err) => {console.log(err)})
   }, [])
