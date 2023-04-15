@@ -10,7 +10,6 @@ export const buttonEdit = document.querySelector('.profile__edit-button');
 export const buttonAdd = document.querySelector('.profile__add-button');
 
 export const apiOption = {
-  cohort: 'cohort-56',
-  token: '9cb52c99-f67f-46e2-9334-b1984a2ebddd',
+  token: localStorage.getItem('token'),
   serverLink: 'https://api.dewhiteproject.nomoredomains.monster'
 }
