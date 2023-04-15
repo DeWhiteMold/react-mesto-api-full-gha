@@ -143,8 +143,8 @@ module.exports.login = (req, res, next) => {
             throw new AuthError('Неправильный email или пароль');
           }
 
-          const { JWT_SECRET = 'secret-key' } = process.env;
-          const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+          const { JWT_SECRET } = process.env;
+          const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'secret-token', { expiresIn: '7d' });
 
           return res.status(200).send({ token });
         })

@@ -2,7 +2,6 @@ import { apiOption } from "./data.js";
 
 class Api {
   constructor(option) {
-    this._cohort = option.cohort;
     this._token = option.token;
     this._serverLink = option.serverLink;
     this._headers =  {
@@ -20,17 +19,17 @@ class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this._serverLink}/${this._cohort}/users/me`, { headers: this._headers })
+    return fetch(`${this._serverLink}/users/me`, { headers: this._headers })
       .then(res => { return this._getResponse(res) });
   }
 
   getInitialCards() {
-    return fetch(`${this._serverLink}/${this._cohort}/cards`, { headers: this._headers })
+    return fetch(`${this._serverLink}/cards`, { headers: this._headers })
       .then((res) => { return this._getResponse(res) });
   }
 
   updateUsetInfo(newName, newAbout) {
-    return fetch(`${this._serverLink}/${this._cohort}/users/me`, {
+    return fetch(`${this._serverLink}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -42,7 +41,7 @@ class Api {
   }
 
   updateUserAvatar(newAvatar) {
-    return fetch(`${this._serverLink}/${this._cohort}/users/me/avatar`, {
+    return fetch(`${this._serverLink}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -53,7 +52,7 @@ class Api {
   }
 
   postNewCard(newName, newLink) {
-    return fetch(`${this._serverLink}/${this._cohort}/cards`, {
+    return fetch(`${this._serverLink}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -65,7 +64,7 @@ class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._serverLink}/${this._cohort}/cards/${cardId}`, {
+    return fetch(`${this._serverLink}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers
     })
@@ -73,7 +72,7 @@ class Api {
   }
   
   addLike(cardId) {
-    return fetch(`${this._serverLink}/${this._cohort}/cards/${cardId}/likes`, {
+    return fetch(`${this._serverLink}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: this._headers
     })
@@ -81,7 +80,7 @@ class Api {
   }
 
   deleteLike(cardId) {
-    return fetch(`${this._serverLink}/${this._cohort}/cards/${cardId}/likes`, {
+    return fetch(`${this._serverLink}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers
     })
