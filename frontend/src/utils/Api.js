@@ -5,7 +5,7 @@ class Api {
     this._token = option.token;
     this._serverLink = option.serverLink;
     this._headers =  {
-        authorization: this._token,
+        authorization: `Bearer ${this._token}`,
         'Content-type': 'application/json'
       }
   }
