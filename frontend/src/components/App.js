@@ -134,7 +134,8 @@ function App() {
   function handleCardAdd(newCard) {
     api.postNewCard(newCard.name, newCard.link)
       .then((res) => {
-        setCards([res, ...cards]);
+        const card = res.data;
+        setCards([card, ...cards]);
       })
       .then(() => {closeAllPopUps()})
       .catch((err) => {console.log(err)})
