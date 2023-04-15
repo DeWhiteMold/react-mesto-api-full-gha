@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 0.0.0.0
+IP-адрес x.x.x.x
 
 Frontend https://dewhiteproject.nomoredomains.monster
 
